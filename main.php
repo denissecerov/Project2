@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['second_choice']))
             echo '<p>You got caught up in popularity with Derrick, and all the attention took away your focus from game.</p>';
             echo '<p>Game Over</p>';
             echo '<form method="post">'; 
-            echo '<input type="radio" name="choice3" value="reset2" id="choice-reset2"><label for="choice-reset2">Reset</label>';
+            echo '<input type="radio" name="choicethree" value="reset2" id="choice-reset2"><label for="choice-reset2">Reset</label>';
             echo '<input type="submit" name="third_choice">';
             echo '</form>';           
         } 
@@ -86,9 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['second_choice']))
             echo '';
             echo 'During a critical game, You suffered a severe ankle injury. The choice between risking long-term damage to continue playing or taking time off to heal challenged his dedication to the sport.';
             echo '<form method="post">';
-            echo '<input type="radio" name="choice3" value="takeRest" id="choice-takeRest"><label for="choice-takeRest">Take Rest</label>';
-            echo '<input type="submit" name="third_choice">';
-            echo '<input type="radio" name="choice3" value="keepPlaying" id="choice-keepPlaying"><label for="choice-keepPlaying">Keep Playing</label>';
+            echo '<input type="radio" name="choicethree" value="takeRest" id="choice-takeRest"><label for="choice-takeRest">Take Rest</label>';
+            echo '<input type="radio" name="choicethree" value="keepPlaying" id="choice-keepPlaying"><label for="choice-keepPlaying">Keep Playing</label>';
             echo '<input type="submit" name="third_choice">';
             echo '</form>';        
         }
@@ -96,15 +95,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['second_choice']))
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['third_choice'])) 
 {
-    $choice3 = $_POST['choice3'];
+    $choice3 = $_POST['choicethree'];
 
     if ($choice3 === takeRest)
     {
-
+        echo '<p>You decided to take rest and your team to lost. Now, your dedication to the sport is in question</p>';
+        echo '<p>Game Over</p>';
+        echo '<form method="post">'; 
+        echo '<input type="radio" name="choice4" value="reset3" id="choice-reset3"><label for="choice-reset3">Reset</label>';
+        echo '<input type="submit" name="fourth_choice">';
+        echo '</form>';
     }
     else if ($choice3 === keepPlaying)
     {
-        
+        echo '<p>Your decision to play through the pain altered his performance and strained his relationship with the coach.</p>';
+        echo '';
+        echo 'Now, A fierce rivalry brewed between Riverside Academy and Metrolane High. Alex faced the choice of either succumbing to the pressure of the rivalry or rising above it to promote sportsmanship';
+        echo '<form method="post">';
+        echo '<input type="radio" name="choice4" value="pressure" id="choice-pressure"><label for="choice-pressure">Crumble under pressure</label>';
+        echo '<input type="radio" name="choice4" value="rise" id="choice-rise"><label for="choice-rise">Rise above the pressure an dpromote sportmanship</label>';
+        echo '<input type="submit" name="fourth_choice">';
+        echo '</form>'; 
     }
 }
 
