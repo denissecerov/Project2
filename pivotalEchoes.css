@@ -6,6 +6,12 @@ body
 }
 
 /* Class Tags */
+.loginBody
+{
+	background-color: #10141d;
+	margin: 0;
+}
+
 .logo
 {
 	font-family: Impact, Times, serif;
