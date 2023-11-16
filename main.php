@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['third_choice']))
 {
     $choice3 = $_POST['choicethree'];
 
-    if ($choice3 === takeRest)
+    if ($choice3 === 'takeRest')
     {
         echo '<p>You decided to take rest and your team to lost. Now, your dedication to the sport is in question</p>';
         echo '<p>Game Over</p>';
@@ -106,17 +106,157 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['third_choice']))
         echo '<input type="submit" name="fourth_choice">';
         echo '</form>';
     }
-    else if ($choice3 === keepPlaying)
+    elseif ($choice3 === 'keepPlaying')
     {
         echo '<p>Your decision to play through the pain altered his performance and strained his relationship with the coach.</p>';
         echo '';
         echo 'Now, A fierce rivalry brewed between Riverside Academy and Metrolane High. Alex faced the choice of either succumbing to the pressure of the rivalry or rising above it to promote sportsmanship';
         echo '<form method="post">';
         echo '<input type="radio" name="choice4" value="pressure" id="choice-pressure"><label for="choice-pressure">Crumble under pressure</label>';
-        echo '<input type="radio" name="choice4" value="rise" id="choice-rise"><label for="choice-rise">Rise above the pressure an dpromote sportmanship</label>';
+        echo '<input type="radio" name="choice4" value="rise" id="choice-rise"><label for="choice-rise">Rise above the pressure and promote sportmanship</label>';
         echo '<input type="submit" name="fourth_choice">';
         echo '</form>'; 
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_POST['fourth_choice']))
+{
+    $choice4 = $_POST['choice4'];
+
+    if ($choice4 === 'pressure')
+    {
+        echo '<p>Oh no, you have crumbled under pressure. :(</p>';
+        echo '<p>Start Over</p>';
+        echo '<form method="post">'; 
+        echo '<input type="radio" name="choice5" value="reset4" id="choice-reset4"><label for="choice-reset4">Reset</label>';
+        echo '<input type="submit" name="fifth_choice">';
+        echo '</form>';
+    }
+    elseif ($choice4 === 'rise')
+    {
+        echo '<p>You have rised above the pressure and won the game for your team, all while showing incredible sportmanship</p>';
+        echo '<p>As your basketball career soared, your family feels neglected.</p>';
+        echo '<p>Now, you are stuck between choosing family commintment to go to your sister graduation or to play an important game for your team</p>';
+        echo '<form method="post">';
+        echo '<input type="radio" name="choice5" value="family" id="choice-family"><label for="choice-family">Go to your sister graduation</label>';
+        echo '<input type="radio" name="choice5" value="team" id="choice-team"><label for="choice-team">Go play for the team</label>';
+        echo '<input type="submit" name="fifth_choice">';
+        echo '</form>';
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_POST['fifth_choice']))
+{
+    $choice5 = $_POST['choice5'];
+
+    if ($choice5 === 'family')
+    {
+        echo '<p>You have made your family proud by going to the graduation, but in doing so you have put your career on the line. Now you are no longer the part of the team</p>';
+        echo '<p>Game Over</p>';
+        echo '<form method="post">'; 
+        echo '<input type="radio" name="choice6" value="reset5" id="choice-reset5"><label for="choice-reset5">Reset</label>';
+        echo '<input type="submit" name="sixth_choice">';
+        echo '</form>';
+    }
+
+    elseif ($choice5 === 'team')
+    {
+        echo '<p>You have won the game for your team but your family has felt neglected.</p>';
+        echo '<p>Because of your dedication and good performance you have been promoted to team captain</p>';
+        echo '<p>The captaincy has come at the cost of you academic progress</p>';
+        echo '<p>Now, you have to make a decision on focusing on studies or focusing on sports</p>';
+        echo '<form method="post">';
+        echo '<input type="radio" name="choice6" value="study" id="choice-study"><label for="choice-study">Focus on Studies</label>';
+        echo '<input type="radio" name="choice6" value="sports" id="choice-sports"><label for="choice-sports">Focus on Sports</label>';
+        echo '<input type="submit" name="sixth_choice">';
+        echo '</form>';
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_POST['sixth_choice']))
+{
+    $choice6 = $_POST['choice6'];
+
+    if ($choice6 === 'study')
+    {
+        echo '<p>You decided to focus on studies and you asked Maya for help, who excells academically. This also improved your bond with Maya</p>';
+        echo '<p>After working together, romantic feelings blossomed between you and Maya, complicating your friendship. The choice
+                between risking your bond for a romantic relationship or preserving your friendship challenged
+                 both your hearts and priorities.
+                </p>';
+        echo '<form method="post">';
+        echo '<input type="radio" name="choice7" value="relationship" id="choice-relationship"><label for="choice-relationship">Explore a Romantic Relationship</label>';
+        echo '<input type="radio" name="choice7" value="friend" id="choice-friend"><label for="choice-friend">Stay Just Friends</label>';
+        echo '<input type="submit" name="seventh_choice">';
+        echo '</form>';
+        
+    }
+    
+    elseif ($choice6 === 'sports')
+    {
+        echo '<p>You decided to focus on studies and you asked Maya for help, who is very goof at sports. This also improved your bond with Maya</p>';
+        echo '<p>After working together, romantic feelings blossomed between you and Maya, complicating your friendship. The choice
+                between risking your bond for a romantic relationship or preserving your friendship challenged
+                 both your hearts and priorities.
+                </p>';
+        echo '<form method="post">';
+        echo '<input type="radio" name="choice7" value="relationship" id="choice-relationship"><label for="choice-relationship">Explore a Romantic Relationship</label>';
+        echo '<input type="radio" name="choice7" value="friend" id="choice-friend"><label for="choice-friend">Stay Just Friends</label>';
+        echo '<input type="submit" name="seventh_choice">';
+        echo '</form>';
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_POST['seventh_choice']))
+{
+    $choice7 = $_POST['choice7'];
+
+    if ($choice7 === 'relationship')
+    {
+        echo '<p>Your decision to explore their feelings deepened their connection but also introduced complexities.</p>';
+        echo '<p>In his final year at Riverside, you face the ultimate decision: to carve your own legacy or live in the shadows of your familys basketball dynasty</p>';
+        echo '<form method="post">';
+        echo '<input type="radio" name="choice8" value="own" id="choice-own"><label for="choice-own">Create your own legacy</label>';
+        echo '<input type="radio" name="choice8" value="familylegacy" id="choice-familylegacy"><label for="choice-familylegacy">Keep living in the shadow of your familys legacy</label>';
+        echo '<input type="submit" name="eighth_choice">';
+        echo '</form>';
+    }
+
+    elseif ($choice7 ===  'friend')
+    {
+        echo '<p>You decided to admire Maya from far, and just stayed friends</p>';
+        echo '<form method="post">';
+        echo '<input type="radio" name="choice8" value="own" id="choice-own"><label for="choice-own">Create your own legacy</label>';
+        echo '<input type="radio" name="choice8" value="familylegacy" id="choice-familylegacy"><label for="choice-familylegacy">Keep living in the shadow of your familys legacy</label>';
+        echo '<input type="submit" name="eighth_choice">';
+        echo '</form>';
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_POST['eighth_choice']))
+{
+    $choice8 = $_POST['choice8'];
+
+    if ($choice8 === 'own')
+    {
+        echo '</p>Your decision to honor your roots while forging your unique path on and off the court solidified your identity</p>';
+        echo'';
+        echo 'In a world where the dribble of the ball echoed louder than words, Alex Carters journey through
+        these pivotal decisions shaped not just his basketball career, but his character and
+        relationships, leaving an indelible mark on the sports-loving city of Metrolane.';
+        echo 'THE END';
+    }
+
+    elseif ($choice8 === 'familylegacy')
+    {
+        echo'<p> You stayed at the safe side, and kept your familys name and dynasty safe.</p>';
+        echo'';
+        echo 'In a world where the dribble of the ball echoed louder than words, Alex Carters journey through
+        these pivotal decisions shaped not just his basketball career, but his character and
+        relationships, leaving an indelible mark on the sports-loving city of Metrolane.';
+        echo 'THE END';
+    }
+}
+session_destroy();
 
 ?>
