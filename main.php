@@ -2,7 +2,7 @@
 // Initialize session
 session_start();
 
-// Load character data from the session and ensure that the 'character' key exists in the session before attempting to access it.
+// Load character data from session
 $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 
 ?>
@@ -45,11 +45,11 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 
 
 				// Present player with a choice
-				echo '<p class="decisionPrompt">As a high school senior, Alex faced the first pivotal decision: whether to join his fathers alma mater or venture into uncharted territory</p>';
+				echo '<p class="decisionPrompt">As a high school senior, Alex faced the first pivotal decision: whether to join his fathers alma mater or venture into uncharted territory.</p>';
 				echo '<form method="post">';
-				echo '<input type="radio" name="choice" value="left" id="choice-left"><label for="choice-left">Stay in comfort zone and go to same school as father</label> <br>';
-				echo '<input type="radio" name="choice" value="right" id="choice-right"><label for="choice-right">Be free venture into uncharted territory</label><br>';
-				echo '<input type="submit" name="first_choice">';
+				echo '<input type="radio" name="choice" value="left" id="choice-left"><label for="choice-left">Stay in comfort zone and go to same school as father.</label> <br>';
+				echo '<input type="radio" name="choice" value="right" id="choice-right"><label for="choice-right">Be free venture into uncharted territory.</label><br>';
+				echo '<input type="submit" name="first_choice" class="submitButton">';
 				echo '</form>';
 
 				// Process player's choice
@@ -60,26 +60,26 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 				    if ($choice === 'left') 
 					{
 				        // Handle same as father  path
-				        echo '<p>You decided to keep doing the same thing as you are, and not take any risks</p>';
-				        echo '<p>You continued to live the life you are living and died at your home</p>';
-				        echo '<p>Game Over</p>';
+				        echo '<hr>';
+				        echo '<p>You decided to keep doing the same thing as you are, and not take any risks.</p>';
+				        echo '<p>You continued to live the life you are living and died at your home.</p>';
+				        echo '<p class="gameOver">GAME OVER</p>';
 				        echo '<form method="post">';
-				        echo '<input type="radio" name="sub_choice" value="reset" id="choice-reset"><label for="choice-reset">Reset</label>';
-				        echo '<input type="submit" name="second_choice">';
+				        echo '<input type="radio" name="sub_choice" value="reset" id="choice-reset"><label for="choice-reset">Reset</label><br>';
+				        echo '<input type="submit" name="second_choice" class="submitButton">';
 				        echo '</form>';
 				    } 
 					elseif ($choice === 'right') 
 					{
 				        // Handle uncharted path
-				        echo '<p>Good Decision!</p>';
-				        echo '<p>Despite his fathers legacy at Metrolane High, you chose to enroll at Riverside Academy</p>';
-				        echo '<p>But it has strained your relationship with your father</p>';
-				        echo '';
-				        echo 'At Riverside, you encountered two contrasting friends, Derrick and Maya. Derrick, a star player, introduced Alex to the glitz of popularity, while Maya, a talented but underrated player, ignited a deep connection with her passion for the game.';
+				        echo '<hr>';
+				        echo '<p class="goodDecision">Good Decision!</p>';
+				        echo '<p>Despite his fathers legacy at Metrolane High, you chose to enroll at Riverside Academy, but it has strained your relationship with your father.</p>';
+				        echo '<p class="decisionPrompt">At Riverside, you encountered two contrasting friends, Derrick and Maya. Derrick, a star player, introduced Alex to the glitz of popularity, while Maya, a talented but underrated player, ignited a deep connection with her passion for the game.<p>';
 				        echo '<form method="post">';
-				        echo '<input type="radio" name="sub_choice" value="derrick" id="choice-derrick"><label for="choice-derrick">Prioritize friendship with Derrick</label>';
-				        echo '<input type="radio" name="sub_choice" value="maya" id="choice-maya"><label for="choice-maya">Prioritize friendship with Maya</label>';
-				        echo '<input type="submit" name="second_choice">';
+				        echo '<input type="radio" name="sub_choice" value="derrick" id="choice-derrick"><label for="choice-derrick">Prioritize friendship with Derrick.</label><br>';
+				        echo '<input type="radio" name="sub_choice" value="maya" id="choice-maya"><label for="choice-maya">Prioritize friendship with Maya.</label><br>';
+				        echo '<input type="submit" name="second_choice" class="submitButton">';
 				        echo '</form>';
 				    }
 				}
@@ -96,23 +96,25 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 				        elseif ($sub_choice === 'derrick') 
 				        {
 				            // Handle derrick friendship choice
+				            echo '<hr>';
 				            echo '<p>You got caught up in popularity with Derrick, and all the attention took away your focus from game.</p>';
-				            echo '<p>Game Over</p>';
+				            echo '<p class="gameOver">GAME OVER</p>';
 				            echo '<form method="post">'; 
-				            echo '<input type="radio" name="choicethree" value="reset2" id="choice-reset2"><label for="choice-reset2">Reset</label>';
-				            echo '<input type="submit" name="third_choice">';
+				            echo '<input type="radio" name="choicethree" value="reset2" id="choice-reset2"><label for="choice-reset2">Reset</label><br>';
+				            echo '<input type="submit" name="third_choice" class="submitButton">';
 				            echo '</form>';           
 				        } 
 				        elseif ($sub_choice === 'maya') 
 				        {
 				            // Handle maya friendship choice
-				            echo '<p>Congratulations! You become friends with Maya and got selected into school basketball team.</p>';
+				            echo '<hr>';
+				            echo '<p class="goodDecision">Congratulations! You become friends with Maya and got selected into school basketball team.</p>';
 				            echo '';
-				            echo 'During a critical game, You suffered a severe ankle injury. The choice between risking long-term damage to continue playing or taking time off to heal challenged his dedication to the sport.';
+				            echo '<p class="decisionPrompt">During a critical game, You suffered a severe ankle injury. The choice between risking long-term damage to continue playing or taking time off to heal challenged his dedication to the sport.</p>';
 				            echo '<form method="post">';
-				            echo '<input type="radio" name="choicethree" value="takeRest" id="choice-takeRest"><label for="choice-takeRest">Take Rest</label>';
-				            echo '<input type="radio" name="choicethree" value="keepPlaying" id="choice-keepPlaying"><label for="choice-keepPlaying">Keep Playing</label>';
-				            echo '<input type="submit" name="third_choice">';
+				            echo '<input type="radio" name="choicethree" value="takeRest" id="choice-takeRest"><label for="choice-takeRest">Take Rest</label><br>';
+				            echo '<input type="radio" name="choicethree" value="keepPlaying" id="choice-keepPlaying"><label for="choice-keepPlaying">Keep Playing</label><br>';
+				            echo '<input type="submit" name="third_choice" class="submitButton">';
 				            echo '</form>';        
 				        }
 				}
@@ -123,22 +125,23 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 
 				    if ($choice3 === 'takeRest')
 				    {
-				        echo '<p>You decided to take rest and your team to lost. Now, your dedication to the sport is in question</p>';
-				        echo '<p>Game Over</p>';
+				    	echo '<hr>';
+				        echo '<p>You decided to take rest and your team has lost. Now, your dedication to the sport is in question.</p>';
+				        echo '<p class="gameOver">GAME OVER</p>';
 				        echo '<form method="post">'; 
-				        echo '<input type="radio" name="choice4" value="reset3" id="choice-reset3"><label for="choice-reset3">Reset</label>';
-				        echo '<input type="submit" name="fourth_choice">';
+				        echo '<input type="radio" name="choice4" value="reset3" id="choice-reset3"><label for="choice-reset3">Reset</label><br>';
+				        echo '<input type="submit" name="fourth_choice" class="submitButton">';
 				        echo '</form>';
 				    }
 				    elseif ($choice3 === 'keepPlaying')
 				    {
+				    	echo '<hr>';
 				        echo '<p>Your decision to play through the pain altered his performance and strained his relationship with the coach.</p>';
-				        echo '';
-				        echo 'Now, A fierce rivalry brewed between Riverside Academy and Metrolane High. Alex faced the choice of either succumbing to the pressure of the rivalry or rising above it to promote sportsmanship';
+				        echo '<p class="decisionPrompt">Now, A fierce rivalry brewed between Riverside Academy and Metrolane High. Alex faced the choice of either succumbing to the pressure of the rivalry or rising above it to promote sportsmanship.<p>';
 				        echo '<form method="post">';
-				        echo '<input type="radio" name="choice4" value="pressure" id="choice-pressure"><label for="choice-pressure">Crumble under pressure</label>';
-				        echo '<input type="radio" name="choice4" value="rise" id="choice-rise"><label for="choice-rise">Rise above the pressure and promote sportmanship</label>';
-				        echo '<input type="submit" name="fourth_choice">';
+				        echo '<input type="radio" name="choice4" value="pressure" id="choice-pressure"><label for="choice-pressure">Crumble under pressure.</label><br>';
+				        echo '<input type="radio" name="choice4" value="rise" id="choice-rise"><label for="choice-rise">Rise above the pressure and promote sportmanship.</label><br>';
+				        echo '<input type="submit" name="fourth_choice" class="submitButton">';
 				        echo '</form>'; 
 				    }
 				}
@@ -149,22 +152,24 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 
 				    if ($choice4 === 'pressure')
 				    {
+				    	echo '<hr>';
 				        echo '<p>Oh no, you have crumbled under pressure. :(</p>';
-				        echo '<p>Start Over</p>';
+				        echo '<p class="gameOver">GAME OVER</p>';
 				        echo '<form method="post">'; 
-				        echo '<input type="radio" name="choice5" value="reset4" id="choice-reset4"><label for="choice-reset4">Reset</label>';
-				        echo '<input type="submit" name="fifth_choice">';
+				        echo '<input type="radio" name="choice5" value="reset4" id="choice-reset4"><label for="choice-reset4">Reset</label><br>';
+				        echo '<input type="submit" name="fifth_choice" class="submitButton">';
 				        echo '</form>';
 				    }
 				    elseif ($choice4 === 'rise')
 				    {
-				        echo '<p>You have rised above the pressure and won the game for your team, all while showing incredible sportmanship</p>';
+				    	echo '<hr>';
+				        echo '<p class="goodDecision">You have rised above the pressure and won the game for your team, all while showing incredible sportmanship.</p>';
 				        echo '<p>As your basketball career soared, your family feels neglected.</p>';
-				        echo '<p>Now, you are stuck between choosing family commintment to go to your sister graduation or to play an important game for your team</p>';
+				        echo '<p class="decisionPrompt">Now, you are stuck between choosing family commintment to go to your sister graduation or to play an important game for your team</p>';
 				        echo '<form method="post">';
-				        echo '<input type="radio" name="choice5" value="family" id="choice-family"><label for="choice-family">Go to your sister graduation</label>';
-				        echo '<input type="radio" name="choice5" value="team" id="choice-team"><label for="choice-team">Go play for the team</label>';
-				        echo '<input type="submit" name="fifth_choice">';
+				        echo '<input type="radio" name="choice5" value="family" id="choice-family"><label for="choice-family">Go to your sister graduation.</label><br>';
+				        echo '<input type="radio" name="choice5" value="team" id="choice-team"><label for="choice-team">Go play for the team.</label><br>';
+				        echo '<input type="submit" name="fifth_choice" class="submitButton">';
 				        echo '</form>';
 				    }
 				}
@@ -175,24 +180,26 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 
 				    if ($choice5 === 'family')
 				    {
-				        echo '<p>You have made your family proud by going to the graduation, but in doing so you have put your career on the line. Now you are no longer the part of the team</p>';
-				        echo '<p>Game Over</p>';
+				    	echo '<hr>';
+				        echo '<p>You have made your family proud by going to the graduation, but in doing so you have put your career on the line. Now you are no longer the part of the team.</p>';
+				        echo '<p class="gameOver">GAME OVER</p>';
 				        echo '<form method="post">'; 
-				        echo '<input type="radio" name="choice6" value="reset5" id="choice-reset5"><label for="choice-reset5">Reset</label>';
-				        echo '<input type="submit" name="sixth_choice">';
+				        echo '<input type="radio" name="choice6" value="reset5" id="choice-reset5"><label for="choice-reset5">Reset</label><br>';
+				        echo '<input type="submit" name="sixth_choice" class="submitButton">';
 				        echo '</form>';
 				    }
 
 				    elseif ($choice5 === 'team')
 				    {
+				    	echo '<hr>';
 				        echo '<p>You have won the game for your team but your family has felt neglected.</p>';
-				        echo '<p>Because of your dedication and good performance you have been promoted to team captain</p>';
-				        echo '<p>The captaincy has come at the cost of you academic progress</p>';
-				        echo '<p>Now, you have to make a decision on focusing on studies or focusing on sports</p>';
+				        echo '<p>Because of your dedication and good performance you have been promoted to team captain.</p>';
+				        echo '<p>The captaincy has come at the cost of you academic progress.</p>';
+				        echo '<p class="decisionPrompt">Now, you have to make a decision on focusing on studies or focusing on sports.</p>';
 				        echo '<form method="post">';
-				        echo '<input type="radio" name="choice6" value="study" id="choice-study"><label for="choice-study">Focus on Studies</label>';
-				        echo '<input type="radio" name="choice6" value="sports" id="choice-sports"><label for="choice-sports">Focus on Sports</label>';
-				        echo '<input type="submit" name="sixth_choice">';
+				        echo '<input type="radio" name="choice6" value="study" id="choice-study"><label for="choice-study">Focus on Studies.</label><br>';
+				        echo '<input type="radio" name="choice6" value="sports" id="choice-sports"><label for="choice-sports">Focus on Sports.</label><br>';
+				        echo '<input type="submit" name="sixth_choice" class="submitButton">';
 				        echo '</form>';
 				    }
 				}
@@ -203,30 +210,32 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 
 				    if ($choice6 === 'study')
 				    {
-				        echo '<p>You decided to focus on studies and you asked Maya for help, who excells academically. This also improved your bond with Maya</p>';
-				        echo '<p>After working together, romantic feelings blossomed between you and Maya, complicating your friendship. The choice
+				    	echo '<hr>';
+				        echo '<p class="goodDecision">You decided to focus on studies and you asked Maya for help, who excells academically. This also improved your bond with Maya.</p>';
+				        echo '<p class="decisionPrompt">After working together, romantic feelings blossomed between you and Maya, complicating your friendship. The choice
 				                between risking your bond for a romantic relationship or preserving your friendship challenged
 				                 both your hearts and priorities.
 				                </p>';
 				        echo '<form method="post">';
-				        echo '<input type="radio" name="choice7" value="relationship" id="choice-relationship"><label for="choice-relationship">Explore a Romantic Relationship</label>';
-				        echo '<input type="radio" name="choice7" value="friend" id="choice-friend"><label for="choice-friend">Stay Just Friends</label>';
-				        echo '<input type="submit" name="seventh_choice">';
+				        echo '<input type="radio" name="choice7" value="relationship" id="choice-relationship"><label for="choice-relationship">Explore a Romantic Relationship.</label><br>';
+				        echo '<input type="radio" name="choice7" value="friend" id="choice-friend"><label for="choice-friend">Stay Just Friends.</label><br>';
+				        echo '<input type="submit" name="seventh_choice" class="submitButton">';
 				        echo '</form>';
 				        
 				    }
 				    
 				    elseif ($choice6 === 'sports')
 				    {
-				        echo '<p>You decided to focus on studies and you asked Maya for help, who is very goof at sports. This also improved your bond with Maya</p>';
-				        echo '<p>After working together, romantic feelings blossomed between you and Maya, complicating your friendship. The choice
+				    	echo '<hr>';
+				        echo '<p class="goodDecision">You decided to focus on studies and you asked Maya for help, who is very goof at sports. This also improved your bond with Maya</p>';
+				        echo '<p class="decisionPrompt">After working together, romantic feelings blossomed between you and Maya, complicating your friendship. The choice
 				                between risking your bond for a romantic relationship or preserving your friendship challenged
 				                 both your hearts and priorities.
 				                </p>';
 				        echo '<form method="post">';
-				        echo '<input type="radio" name="choice7" value="relationship" id="choice-relationship"><label for="choice-relationship">Explore a Romantic Relationship</label>';
-				        echo '<input type="radio" name="choice7" value="friend" id="choice-friend"><label for="choice-friend">Stay Just Friends</label>';
-				        echo '<input type="submit" name="seventh_choice">';
+				        echo '<input type="radio" name="choice7" value="relationship" id="choice-relationship"><label for="choice-relationship">Explore a Romantic Relationship.</label><br>';
+				        echo '<input type="radio" name="choice7" value="friend" id="choice-friend"><label for="choice-friend">Stay Just Friends.</label><br>';
+				        echo '<input type="submit" name="seventh_choice" class="submitButton">';
 				        echo '</form>';
 				    }
 				}
@@ -237,22 +246,24 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 
 				    if ($choice7 === 'relationship')
 				    {
+				    	echo '<hr>';
 				        echo '<p>Your decision to explore their feelings deepened their connection but also introduced complexities.</p>';
-				        echo '<p>In his final year at Riverside, you face the ultimate decision: to carve your own legacy or live in the shadows of your familys basketball dynasty</p>';
+				        echo '<p class="decisionPrompt">In his final year at Riverside, you face the ultimate decision: to carve your own legacy or live in the shadows of your familys basketball dynasty.</p>';
 				        echo '<form method="post">';
-				        echo '<input type="radio" name="choice8" value="own" id="choice-own"><label for="choice-own">Create your own legacy</label>';
-				        echo '<input type="radio" name="choice8" value="familylegacy" id="choice-familylegacy"><label for="choice-familylegacy">Keep living in the shadow of your familys legacy</label>';
-				        echo '<input type="submit" name="eighth_choice">';
+				        echo '<input type="radio" name="choice8" value="own" id="choice-own"><label for="choice-own">Create your own legacy.</label><br>';
+				        echo '<input type="radio" name="choice8" value="familylegacy" id="choice-familylegacy"><label for="choice-familylegacy">Keep living in the shadow of your familys legacy.</label><br>';
+				        echo '<input type="submit" name="eighth_choice" class="submitButton">';
 				        echo '</form>';
 				    }
 
 				    elseif ($choice7 ===  'friend')
 				    {
-				        echo '<p>You decided to admire Maya from far, and just stayed friends</p>';
+				    	echo '<hr>';
+				        echo '<p>You decided to admire Maya from far, and just stayed friends.</p>';
 				        echo '<form method="post">';
-				        echo '<input type="radio" name="choice8" value="own" id="choice-own"><label for="choice-own">Create your own legacy</label>';
-				        echo '<input type="radio" name="choice8" value="familylegacy" id="choice-familylegacy"><label for="choice-familylegacy">Keep living in the shadow of your familys legacy</label>';
-				        echo '<input type="submit" name="eighth_choice">';
+				        echo '<input type="radio" name="choice8" value="own" id="choice-own"><label for="choice-own">Create your own legacy.</label><br>';
+				        echo '<input type="radio" name="choice8" value="familylegacy" id="choice-familylegacy"><label for="choice-familylegacy">Keep living in the shadow of your familys legacy.</label><br>';
+				        echo '<input type="submit" name="eighth_choice" class="submitButton">';
 				        echo '</form>';
 				    }
 				}
@@ -263,22 +274,24 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 
 				    if ($choice8 === 'own')
 				    {
-				        echo '</p>Your decision to honor your roots while forging your unique path on and off the court solidified your identity</p>';
+				    	echo '<hr>';
+				        echo '</p>Your decision to honor your roots while forging your unique path on and off the court solidified your identity.</p>';
 				        echo'';
 				        echo 'In a world where the dribble of the ball echoed louder than words, Alex Carters journey through
 				        these pivotal decisions shaped not just his basketball career, but his character and
 				        relationships, leaving an indelible mark on the sports-loving city of Metrolane.';
-				        echo 'THE END';
+				        echo '<p class="goodDecision">THE END</p>';
 				    }
 
 				    elseif ($choice8 === 'familylegacy')
 				    {
+				    	echo '<hr>';
 				        echo'<p> You stayed at the safe side, and kept your familys name and dynasty safe.</p>';
 				        echo'';
 				        echo 'In a world where the dribble of the ball echoed louder than words, Alex Carters journey through
 				        these pivotal decisions shaped not just his basketball career, but his character and
 				        relationships, leaving an indelible mark on the sports-loving city of Metrolane.';
-				        echo 'THE END';
+				        echo '<p class="goodDecision">THE END</p>';
 				    }
 				}
 				session_destroy();
