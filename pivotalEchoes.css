@@ -1,82 +1,121 @@
-/* Main Tags */
-body
-{
-	background-color: #10141d;
-	margin: 0;
-}
-
 /* Class Tags */
-.loginBody
+.loginFile
 {
-	background-color: #10141d;
-	margin: 0;
+    margin: 0;
+    background-color: #10141d;
 }
 
-.logo
+.mainFile
 {
-	font-family: Impact, Times, serif;
-	font-size: 15pt;
+    background-image: url('alex.gif');
+    background-size: cover;
+    margin: 0;
+}
+
+.logo 
+{
+    border: 1px solid black;
+    background-color: #10141d;
+    height: 100px;
+    font-family: 'Impact', 'Times New Roman', serif;
+    font-size: 15pt;
 }
 
 .linkUnderline
 {
-	text-decoration: none;
+    text-decoration: none;
 }
 
-.signUpContainer
+.line
 {
-	position: relative; top: 200px;
-	margin: auto;
-	width: 700px;
+    position: relative; bottom: 10px;
 }
 
-.signUpForm
+.signUp
 {
-	margin: auto;
-	width: 300px; height: 300px;
-	text-align: center;
+    position: relative; top: 100px;
+    margin: auto;
+    width: 300px;
+    text-align: center;
 }
 
+.gameContainer
+{
+    display: flex;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.userStat
+{
+    position: absolute; left: 350px;
+    border: 1px solid red; border-radius: 5px;
+    background-color: #10141d;
+    padding: 20px;
+    color: white;
+}
+
+.dialogue
+{
+    border-radius: 8px;
+    padding: 20px;
+    margin: auto;
+    background-color: #10141d;
+    color: white;
+    max-width: 800px;   
+}
+
+.decisionPrompt
+{
+    color: indianred;
+}
 
 /* ID Tags */
 #pivotal
 {
-	color: indianred;
+    color: indianred;
 }
 
 #echoes
 {
-	color: skyblue;
+    color: skyblue;
 }
 
 #beginYourStory
 {
-	text-align: center;
-	font-size: 50pt;
-	color: deepskyblue;
+    position: relative; top: 100px;
+    text-align: center;
+    font-size: 50pt;
+    color: deepskyblue;
 }
 
 #name
 {
-	border: 1px solid steelblue; border-radius: 10px;
-	margin: auto;
-	width: 300px; height: 50px;
-	font-size: 18px;
-	text-align: center;
+    border: 1px solid steelblue; border-radius: 10px;
+    margin: auto;
+    width: 300px; height: 50px;
+    font-size: 18px;
+    text-align: center;
 }
 
 #beginStoryButton
 {
-	position: relative; top: 70px;
-	border: 1px solid steelblue; border-radius: 10px;
-	background-color: floralwhite;
-	width: 200px; height: 50px;
-	font-size: 15pt;
-	transition: transform 0.3s, background-color 0.3s, color 0.3s;
+    position: relative; top: 50px;
+    border: 1px solid steelblue; border-radius: 10px;
+    background-color: floralwhite;
+    width: 200px; height: 50px;
+    font-size: 15pt;
+    transition: transform 0.3s, background-color 0.3s, color 0.3s;
 }
 #beginStoryButton:hover
 {
-	transform: translateY(-5px);
-	background-color: indianred;
-	color: skyblue;
+    transform: translateY(-5px);
+    background-color: indianred;
+    color: skyblue;
+}
+
+#welcomeRPG
+{
+    text-align: center;
+    font-family: Tahoma, Times, serif;
+    color: white;
 }
