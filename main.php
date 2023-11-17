@@ -2,7 +2,7 @@
 // Initialize session
 session_start();
 
-// Load character data from session
+// Load character data from the session and ensure that the 'character' key exists in the session before attempting to access it.
 $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 
 ?>
