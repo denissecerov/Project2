@@ -319,6 +319,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 				fwrite($file, $_SESSION['username'] . "," . $_SESSION['points'] . "\n"); // Write name and points
 				fclose($file);
 
+				echo '<div class="leaderboard">';
 				echo '<h2>Leaderboard</h2>';
 				$leaderboard = [];
 
