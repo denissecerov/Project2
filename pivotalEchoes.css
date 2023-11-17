@@ -66,7 +66,32 @@
 
 .decisionPrompt
 {
-    color: indianred;
+    color: skyblue;
+}
+
+.submitButton
+{
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    transition: color 0.3s;
+}
+.submitButton:hover
+{
+    color: skyblue;
+}
+
+.gameOver
+{
+    font-family: Impact, Times, serif;
+    font-size: 12pt;
+    color: red;
+}
+
+.goodDecision
+{
+    font-family: Impact, Times, serif;
+    color: green;
 }
 
 /* ID Tags */
