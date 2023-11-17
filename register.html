@@ -1,26 +1,36 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Registration Page</title>
-</head>
-<body>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> Pivotal Echoes | Sign Up </title>
+        <link rel="stylesheet" href="pivotalEchoes.css">
+    </head>
+<body class="registerFile">
+    <!-- Logo -->
+    <div class="logo">
+        <a href="https://codd.cs.gsu.edu/~stran33/WP/PW/2/login.html" class="linkUnderline" id="pivotal">
+            <h1>Pivotal <span id="echoes">Echoes</span></h1>
+        </a>
+        <hr class="line">
+    </div>
 
-    <h2>Registration Form</h2>
+    <!-- Register -->
+    <h1 id="beginYourStory">Registration Form</h1>
 
-    <form action="register.php" method="post">
-        <div class="container">
-            <label for="regUsername"><b>Username</b></label>
-            <input type="text" placeholder="Choose a Username" name="regUsername" required>
+    <div class="signUp">
+        <form action="register.php" method="post">
+                <label for="regUsername"><b>Username</b></label><br>
+                <input type="text" placeholder="Choose a Username" name="regUsername" class="registrationTextBox" required><br><br>
 
-            <label for="regPassword"><b>Password</b></label>
-            <input type="password" placeholder="Create a Password" name="regPassword" required>
+                <label for="regPassword"><b>Password</b></label><br>
+                <input type="password" placeholder="Create a Password" name="regPassword" class="registrationTextBox" required><br><br>
 
-            <label for="regPasswordConfirm"><b>Confirm Password</b></label>
-            <input type="password" placeholder="Confirm Your Password" name="regPasswordConfirm" required>
+                <label for="regPasswordConfirm"><b>Confirm Password</b></label><br>
+                <input type="password" placeholder="Confirm Your Password" name="regPasswordConfirm" class="registrationTextBox" required><br>
 
-            <button type="submit">Register</button>
-        </div>
-    </form>
+                <button type="submit" class="submitButton">Register</button>  
+        </form>
+    </div>
 
 </body>
 </html>
