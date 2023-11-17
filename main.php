@@ -326,21 +326,22 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 				$file = fopen("leaderboard.txt", "r");
 				if ($file) 
 				{
-    				while (($line = fgets($file)) !== false) 
+    					while (($line = fgets($file)) !== false) 
 					{
-        				list($name, $points) = explode(",", trim($line));
-        				if (!isset($leaderboard[$name])) 
+        					list($name, $points) = explode(",", trim($line));
+        					if (!isset($leaderboard[$name])) 
 						{
-            				$leaderboard[$name] = 0;
-        				}
-        				$leaderboard[$name] += (int)$points; // Aggregate points for each player
-    				}
-    				fclose($file);
+            						$leaderboard[$name] = 0;
+        					}
+        					$leaderboard[$name] += (int)$points; // Aggregate points for each player
+    					}
+    					fclose($file);
 				}
 
 				// Display aggregated leaderboard
-				foreach ($leaderboard as $name => $points) {
-    			echo "<p>$name: $points Points</p>";
+				foreach ($leaderboard as $name => $points) 
+				{
+    					echo "<p>$name: $points Points</p>";
 				}
 
 
