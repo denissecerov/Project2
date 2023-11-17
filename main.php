@@ -318,8 +318,6 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 				$file = fopen("leaderboard.txt", "a"); // Open the file in append mode
 				fwrite($file, $_SESSION['username'] . "," . $_SESSION['points'] . "\n"); // Write name and points
 				fclose($file);
-				
-				session_destroy();
 
 				echo '<h2>Leaderboard</h2>';
 				$leaderboard = [];
