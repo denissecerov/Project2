@@ -2,6 +2,10 @@
 // Initialize session
 session_start();
 
+if (!isset($_SESSION['points'])) {
+    $_SESSION['points'] = 0;
+}
+
 // Load character data from session
 $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 
@@ -72,6 +76,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 					elseif ($choice === 'right') 
 					{
 				        // Handle uncharted path
+						$_SESSION['points'] += 10;
 				        echo '<hr>';
 				        echo '<p class="goodDecision">Good Decision!</p>';
 				        echo '<p>Despite his fathers legacy at Metrolane High, you chose to enroll at Riverside Academy, but it has strained your relationship with your father.</p>';
@@ -82,6 +87,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 				        echo '<input type="submit" name="second_choice" class="submitButton">';
 				        echo '</form>';
 				    }
+					
 				}
 				  // Process sub-choice
 				if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['second_choice'])) 
@@ -107,6 +113,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 				        elseif ($sub_choice === 'maya') 
 				        {
 				            // Handle maya friendship choice
+							$_SESSION['points'] += 10;
 				            echo '<hr>';
 				            echo '<p class="goodDecision">Congratulations! You become friends with Maya and got selected into school basketball team.</p>';
 				            echo '';
@@ -117,6 +124,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 				            echo '<input type="submit" name="third_choice" class="submitButton">';
 				            echo '</form>';        
 				        }
+						
 				}
 
 				if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['third_choice'])) 
@@ -135,6 +143,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 				    }
 				    elseif ($choice3 === 'keepPlaying')
 				    {
+						$_SESSION['points'] += 10;
 				    	echo '<hr>';
 				        echo '<p>Your decision to play through the pain altered his performance and strained his relationship with the coach.</p>';
 				        echo '<p class="decisionPrompt">Now, A fierce rivalry brewed between Riverside Academy and Metrolane High. Alex faced the choice of either succumbing to the pressure of the rivalry or rising above it to promote sportsmanship.<p>';
@@ -162,6 +171,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 				    }
 				    elseif ($choice4 === 'rise')
 				    {
+						$_SESSION['points'] += 10;
 				    	echo '<hr>';
 				        echo '<p class="goodDecision">You have rised above the pressure and won the game for your team, all while showing incredible sportmanship.</p>';
 				        echo '<p>As your basketball career soared, your family feels neglected.</p>';
@@ -191,6 +201,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 
 				    elseif ($choice5 === 'team')
 				    {
+						$_SESSION['points'] += 10;
 				    	echo '<hr>';
 				        echo '<p>You have won the game for your team but your family has felt neglected.</p>';
 				        echo '<p>Because of your dedication and good performance you have been promoted to team captain.</p>';
@@ -210,6 +221,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 
 				    if ($choice6 === 'study')
 				    {
+						$_SESSION['points'] += 10;
 				    	echo '<hr>';
 				        echo '<p class="goodDecision">You decided to focus on studies and you asked Maya for help, who excells academically. This also improved your bond with Maya.</p>';
 				        echo '<p class="decisionPrompt">After working together, romantic feelings blossomed between you and Maya, complicating your friendship. The choice
@@ -226,6 +238,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 				    
 				    elseif ($choice6 === 'sports')
 				    {
+						$_SESSION['points'] += 10;
 				    	echo '<hr>';
 				        echo '<p class="goodDecision">You decided to focus on studies and you asked Maya for help, who is very goof at sports. This also improved your bond with Maya</p>';
 				        echo '<p class="decisionPrompt">After working together, romantic feelings blossomed between you and Maya, complicating your friendship. The choice
@@ -246,6 +259,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 
 				    if ($choice7 === 'relationship')
 				    {
+						$_SESSION['points'] += 10;
 				    	echo '<hr>';
 				        echo '<p>Your decision to explore their feelings deepened their connection but also introduced complexities.</p>';
 				        echo '<p class="decisionPrompt">In his final year at Riverside, you face the ultimate decision: to carve your own legacy or live in the shadows of your familys basketball dynasty.</p>';
@@ -258,6 +272,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 
 				    elseif ($choice7 ===  'friend')
 				    {
+						$_SESSION['points'] += 10;
 				    	echo '<hr>';
 				        echo '<p>You decided to admire Maya from far, and just stayed friends.</p>';
 				        echo '<form method="post">';
@@ -274,6 +289,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 
 				    if ($choice8 === 'own')
 				    {
+						$_SESSION['points'] += 10;
 				    	echo '<hr>';
 				        echo '</p>Your decision to honor your roots while forging your unique path on and off the court solidified your identity.</p>';
 				        echo'';
@@ -285,6 +301,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 
 				    elseif ($choice8 === 'familylegacy')
 				    {
+						$_SESSION['points'] += 10;
 				    	echo '<hr>';
 				        echo'<p> You stayed at the safe side, and kept your familys name and dynasty safe.</p>';
 				        echo'';
@@ -293,8 +310,39 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 				        relationships, leaving an indelible mark on the sports-loving city of Metrolane.';
 				        echo '<p class="goodDecision">THE END</p>';
 				    }
+					
+					
 				}
+				$file = fopen("leaderboard.txt", "a"); // Open the file in append mode
+				fwrite($file, $character['name'] . "," . $_SESSION['points'] . "\n"); // Write name and points
+				fclose($file);
+				
 				session_destroy();
+
+				echo '<h2>Leaderboard</h2>';
+				$leaderboard = [];
+
+				// Read points from file
+				$file = fopen("leaderboard.txt", "r");
+				if ($file) 
+				{
+    				while (($line = fgets($file)) !== false) 
+					{
+        				list($name, $points) = explode(",", trim($line));
+        				if (!isset($leaderboard[$name])) 
+						{
+            				$leaderboard[$name] = 0;
+        				}
+        				$leaderboard[$name] += (int)$points; // Aggregate points for each player
+    				}
+    				fclose($file);
+				}
+
+				// Display aggregated leaderboard
+				foreach ($leaderboard as $name => $points) {
+    			echo "<p>$name: $points Points</p>";
+				}
+
 
 				?>
 			</div>
