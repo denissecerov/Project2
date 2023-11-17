@@ -1,6 +1,11 @@
 <?php
 // Initialize session
 session_start();
+if (!isset($_SESSION['username'])) 
+{
+    header("Location: login.html"); // Redirect to login page if not logged in
+    exit;
+}
 
 if (!isset($_SESSION['points'])) {
     $_SESSION['points'] = 0;
@@ -29,15 +34,12 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
     	</div>
 
     	<!-- Main Content -->
-    	<h1 id="welcomeRPG">Welcome to Your Story!</h1>
+    	<h1 id="welcomeRPG">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?> to your story!</h1>
     	<div class="gameContainer">
 	    	<div class="userStat">
 	    		<?php
-		    		echo '<p>Your Current Stats</p>';
 					echo '<ul>';
-					echo '<li>Name: ' . $character['name'] . '</li>';
-					echo '<li>Level: ' . $character['level'] . '</li>';
-					echo '<li>HP: ' . $character['hp'] . '' . $character['max_hp'] . '</li>';
+					echo '<li>Username: ' . ($_SESSION['username']) . '</li>';
 					echo '</ul>';
 	    		?>
 	    	</div>
@@ -45,7 +47,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 			<div class="dialogue">
 				<?php
 				//Prologue
-				echo '<p> In the bustling city of Metrolane, where passion for sports pulsated through every street, lived Alex Carter, a rising basketball prodigy. His skill on the court was unparalleled, but beneath his stellar performance lay a tumultuous personal life. The Carter family had a deep legacy in basketball, with Alex destined to continue it. However, the weight of expectations and the desire to forge his own path conflicted within him.</p>';
+				echo '<p> In the bustling city of Metrolane, where passion for sports pulsated through every street, lived  '.($_SESSION['username']).' , a rising basketball prodigy. His skill on the court was unparalleled, but beneath his stellar performance lay a tumultuous personal life. The Carter family had a deep legacy in basketball, with Alex destined to continue it. However, the weight of expectations and the desire to forge his own path conflicted within him.</p>';
 
 
 				// Present player with a choice
@@ -314,7 +316,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
 					
 				}
 				$file = fopen("leaderboard.txt", "a"); // Open the file in append mode
-				fwrite($file, $character['name'] . "," . $_SESSION['points'] . "\n"); // Write name and points
+				fwrite($file, $_SESSION['username'] . "," . $_SESSION['points'] . "\n"); // Write name and points
 				fclose($file);
 				
 				session_destroy();
