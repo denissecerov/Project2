@@ -34,7 +34,7 @@ $character = isset($_SESSION['character']) ? $_SESSION['character'] : [];
     	</div>
 
     	<!-- Main Content -->
-    	<h1 id="welcomeRPG">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?> to your story!</h1>
+    	<h1 id="welcomeRPG">Welcome <?php echo htmlspecialchars($_SESSION['username']); ?>, to your story!</h1>
     	<div class="gameContainer">
 	    	<div class="userStat">
 	    		<?php
